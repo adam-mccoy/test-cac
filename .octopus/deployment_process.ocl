@@ -20,6 +20,7 @@ step "channel" {
 
     action {
         action_type = "Octopus.Script"
+        channels = ["another-channel"]
         properties = {
             Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = "Write-Host \"Hello\""
@@ -79,7 +80,7 @@ step "package" {
 }
 
 step "manual-intervention-required" {
-    name = "Manual Intervention Required"
+    name = "Team"
 
     action {
         action_type = "Octopus.Manual"
@@ -87,6 +88,7 @@ step "manual-intervention-required" {
             Octopus.Action.Manual.BlockConcurrentDeployments = "False"
             Octopus.Action.Manual.Instructions = "Hello"
             Octopus.Action.Manual.ResponsibleTeamIds = "global/everyone"
+            Octopus.Action.RunOnServer = "false"
         }
     }
 }
