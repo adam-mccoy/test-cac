@@ -101,6 +101,7 @@ step "project" {
         properties = {
             Octopus.Action.DeployRelease.DeploymentCondition = "Always"
             Octopus.Action.DeployRelease.ProjectId = "another-project"
+            Octopus.Action.RunOnServer = "false"
         }
         worker_pool_variable = ""
     }
@@ -113,11 +114,31 @@ step "azure-account" {
         action_type = "Octopus.AzurePowerShell"
         properties = {
             Octopus.Action.Azure.AccountId = "azure"
+            Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = "Write-Host \"Hello, Azure\""
             Octopus.Action.Script.ScriptSource = "Inline"
             Octopus.Action.Script.Syntax = "PowerShell"
             OctopusUseBundledTooling = "False"
         }
+        worker_pool_variable = ""
+    }
+}
+
+step "tenant-tags" {
+    name = "Tenant Tags"
+    properties = {
+        Octopus.Action.TargetRoles = "role"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptBody = "Write-Host \"Hello\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        tenant_tags = ["Tags/A", "Tags/B"]
         worker_pool_variable = ""
     }
 }
