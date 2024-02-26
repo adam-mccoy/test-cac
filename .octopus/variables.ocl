@@ -1,0 +1,11 @@
+variable "machine" {
+    value "abcd" {
+        machine = ["region-1", "region-2"]
+    }
+}
+
+variable "runbook" {
+    value "xyz" {
+        process = ["runbook/test-runbook"]
+    }
+}
