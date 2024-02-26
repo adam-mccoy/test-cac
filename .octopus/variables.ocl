@@ -9,3 +9,9 @@ variable "runbook" {
         process = ["runbook/test-runbook"]
     }
 }
+
+variable "step" {
+    value "afsdfsdaf" {
+        action = ["package"]
+    }
+}
